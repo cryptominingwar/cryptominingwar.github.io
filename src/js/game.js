@@ -13,12 +13,14 @@ game.referral = 0;
 
 game.user = {
     address: '',
+	player_balance: 0,
     crystals: 0,
     lastupdate: 0,
     hashratePerDay: 0,
     miners: [],
     hasBoost: 0,
     referral_count: 0,
+    yourQuest: 0,
     unconfirmedCrystals: 0,
 };
 

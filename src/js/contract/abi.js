@@ -194,6 +194,15 @@ export const abi = [{
   },
   {
     "constant": false,
+    "inputs": [],
+    "name": "withdrawPayments",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
     "inputs": [{
       "name": "minerNumbers",
       "type": "uint256[]"
@@ -234,6 +243,14 @@ export const abi = [{
       {
         "name": "referral_count",
         "type": "uint256"
+      },
+	    {
+        "name": "playerBalance",
+        "type": "uint256"
+      },
+      {
+        "name": "noQuest",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -265,6 +282,18 @@ export const abi = [{
     "outputs": [],
     "payable": true,
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{
+      "name": "clientNumber",
+      "type": "uint256"
+    }],
+    "name": "doQuest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

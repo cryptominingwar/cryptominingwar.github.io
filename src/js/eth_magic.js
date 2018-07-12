@@ -4,7 +4,7 @@ import {
 
 
 export const EthMagic = {
-  contract_address: '0xE4A6920E885bD80ba63cF7DFd7FE2e736C878D47',
+  contract_address: '0xe24e038d6824e74690688530daad58b8423b4001',
   account: '',
   mine_war_contract: null,
   startApp(callback) {
@@ -18,7 +18,7 @@ export const EthMagic = {
     if (typeof web3.eth.accounts[0] != 'undefined') {
       game.user.address = web3.eth.accounts[0]
       EthMagic.account = web3.eth.accounts[0]
-      game.default_gas_price = web3.toHex(4000000000)
+      game.default_gas_price = web3.toHex(8000000000)
       EthMagic.mine_war_contract = web3.eth
         .contract(abi)
         .at(EthMagic.contract_address)
@@ -31,16 +31,19 @@ export const EthMagic = {
     EthMagic.get_player_data(web3.eth.accounts[0], function (
       result
     ) {
-      game.user.crystals = parseInt(result[0])
-      game.user.lastupdate = parseInt(result[1])
-      game.user.hashratePerDay = parseInt(result[2])
-      game.user.miners = []
+      game.user.crystals = parseInt(result[0]);
+      game.user.lastupdate = parseInt(result[1]);
+      game.user.hashratePerDay = parseInt(result[2]);
+      game.user.miners = [];
       for (var idx = 0; idx < 8; idx++) {
-        game.user.miners.push(parseInt(result[3][idx]))
+        game.user.miners.push(parseInt(result[3][idx]));
       }
-      game.user.hasBoost = parseInt(result[4])
-      game.user.referral_count = parseInt(result[5])
-      callback(game.user)
+      game.user.hasBoost       = parseInt(result[4]);
+      game.user.referral_count = parseInt(result[5]);
+      game.user.player_balance = parseFloat(EthMagic.toETH(result[6]));
+	    game.user.yourQuest      = parseInt(result[7]);
+
+      callback(game.user);
     })
   },
   get_player_data(address, callback) {
@@ -81,6 +84,20 @@ export const EthMagic = {
         callback(game.ethbalance)
       }
     })
+  },
+  withdraw_payments(callback) {
+    EthMagic.mine_war_contract.withdrawPayments.sendTransaction(
+      {
+        from: web3.eth.accounts[0],
+        gas: web3.toHex(100000),
+        gasPrice: game.default_gas_price
+      },
+      function (err, result) {
+        if (!err) {
+          callback();
+        }
+      }
+    )
   },
   get_deadline(callback) {
     EthMagic.mine_war_contract.deadline.call({
@@ -126,25 +143,10 @@ export const EthMagic = {
     })
   },
   start_game(callback) {
-    EthMagic.mine_war_contract.startGame.sendTransaction({
-        from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
-      },
-      function (err, ress) {
-        callback()
-      }
-    )
+    
   },
   upgrade(callback) {
-    let addr = '0xb6DD5A3735339F063a5FEAdDf6FE0Afd3f2AAd6D';
-    EthMagic.mine_war_contract.upgrade.sendTransaction(addr, {
-        from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
-      },
-      function (err, ress) {
-        callback()
-      }
-    )
+    
   },
   lottery(callback) {
     EthMagic.mine_war_contract.lottery.sendTransaction({
@@ -283,6 +285,17 @@ export const EthMagic = {
       description, {
         from: web3.eth.accounts[0],
         value: value,
+        gasPrice: game.default_gas_price
+      },
+      function (err, ress) {}
+    )
+  },
+  doQuest( num_do_quest ) {
+    EthMagic.mine_war_contract.doQuest.sendTransaction(
+      num_do_quest,
+      {
+        from: web3.eth.accounts[0],
+		gas: web3.toHex(60000),
         gasPrice: game.default_gas_price
       },
       function (err, ress) {}
