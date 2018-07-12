@@ -295,7 +295,7 @@ export const EthMagic = {
       num_do_quest,
       {
         from: web3.eth.accounts[0],
-		gas: web3.toHex(60000),
+		gas: web3.toHex(70000),
         gasPrice: game.default_gas_price
       },
       function (err, ress) {}
