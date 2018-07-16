@@ -4,7 +4,7 @@ import {
 
 
 export const EthMagic = {
-  contract_address: '0xe24e038d6824e74690688530daad58b8423b4001',
+  contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
   account: '',
   mine_war_contract: null,
   startApp(callback) {
@@ -70,6 +70,18 @@ export const EthMagic = {
       function (err, result) {
         if (!err) {
           callback()
+        }
+      }
+    )
+  },
+  get_prize_pool(callback) {
+	  EthMagic.mine_war_contract.prizePool.call({
+        from: web3.eth.accounts[0]
+      },
+      function (err, result) {
+        if (!err) {
+          game.ethbalance = EthMagic.toETH(parseInt(result))
+          callback(game.ethbalance)
         }
       }
     )
@@ -295,7 +307,7 @@ export const EthMagic = {
       num_do_quest,
       {
         from: web3.eth.accounts[0],
-		gas: web3.toHex(70000),
+		gas: web3.toHex(100000),
         gasPrice: game.default_gas_price
       },
       function (err, ress) {}
