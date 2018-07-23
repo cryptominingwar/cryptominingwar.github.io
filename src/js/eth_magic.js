@@ -38,10 +38,14 @@ export const EthMagic = {
       for (var idx = 0; idx < 8; idx++) {
         game.user.miners.push(parseInt(result[3][idx]));
       }
+	  if(game.user.miners[0] == 0) {
+		  game.user.crystals = 0;
+		  game.user.hashratePerDay = 0;
+	  }
       game.user.hasBoost       = parseInt(result[4]);
       game.user.referral_count = parseInt(result[5]);
       game.user.player_balance = parseFloat(EthMagic.toETH(result[6]));
-	    game.user.yourQuest      = parseInt(result[7]);
+	  game.user.yourQuest      = parseInt(result[7]);
 
       callback(game.user);
     })
