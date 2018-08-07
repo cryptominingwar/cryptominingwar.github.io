@@ -4,8 +4,8 @@ import {
 
 
 export const EthMagic = {
-  // contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
-  contract_address: '0x7544c6539c90a49ae6a70227bb8b2eb2517159cb',
+  contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
+  //contract_address: '0x7544c6539c90a49ae6a70227bb8b2eb2517159cb',
   account: '',
   mine_war_contract: null,
   startApp(callback) {
