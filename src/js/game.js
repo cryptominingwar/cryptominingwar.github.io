@@ -112,35 +112,35 @@ game.sellOrderData = [];
 
 game.sellOrderData[0] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.sellOrderData[1] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.sellOrderData[2] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.sellOrderData[3] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.sellOrderData[4] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
@@ -150,35 +150,35 @@ game.buyOrderData = [];
 
 game.buyOrderData[0] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.buyOrderData[1] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.buyOrderData[2] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.buyOrderData[3] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
 };
 game.buyOrderData[4] = {
     owner: '',
-    title: 'title',
+    title: 'Title',
     description: '',
     unitPrice: 0,
     amount: 0,
