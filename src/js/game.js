@@ -8,6 +8,7 @@ game.numberOfBoosts = 5;
 game.numberOfOrders = 5;
 
 game.deadline = Date.now;
+game.showLottery = false;
 
 game.referral = 0;
 
