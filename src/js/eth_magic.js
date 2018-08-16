@@ -5,7 +5,7 @@ import {
 
 export const EthMagic = {
   contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
-  //contract_address: '0x987FB21bAf171f96551964bCb6d6F6f5ECd76190',
+  // contract_address: '0x987FB21bAf171f96551964bCb6d6F6f5ECd76190',
   account: '',
   mine_war_contract: null,
   startApp(callback) {
