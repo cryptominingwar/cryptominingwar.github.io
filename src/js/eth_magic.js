@@ -4,8 +4,10 @@ import {
 
 
 export const EthMagic = {
-  contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
-  // contract_address: '0x987FB21bAf171f96551964bCb6d6F6f5ECd76190',
+  //v1
+  //contract_address: '0x0de197dc289d680e734ccab866d529505b2638db',
+  //v2
+  contract_address: '0xf84c61bb982041c030b8580d1634f00fffb89059',
   account: '',
   mine_war_contract: null,
   startApp(callback) {
@@ -65,9 +67,9 @@ export const EthMagic = {
       }
     )
   },
-  get_free(ref, callback) {
+  get_free(callback) {
     EthMagic.mine_war_contract.getFreeMiner.sendTransaction(
-      ref, {
+      {
         from: web3.eth.accounts[0],
         gas: web3.toHex(200000),
         gasPrice: game.default_gas_price
@@ -184,6 +186,17 @@ export const EthMagic = {
       function (err, result) {
         if (!err) {
           callback()
+        }
+      }
+    )
+  },
+  getCurrentMiningWarGameRoundId ( callback ) {
+    EthMagic.mine_war_contract.roundNumber.call({
+        from: web3.eth.accounts[0]
+      },
+      function (err, result) {
+        if (!err) {
+          callback(result)
         }
       }
     )

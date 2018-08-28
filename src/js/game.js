@@ -9,6 +9,29 @@ game.numberOfOrders = 5;
 
 game.deadline = Date.now;
 game.showLottery = false;
+game.currentMiniGameId = 0; // is mini game of airdrop game
+game.currentAirdropGameData = {
+    miningWarRoundNumber: 0,
+    ended: 0,
+    prizeCrystal: 0,
+    startTime: 0,
+    endTime: 0,
+    totalJoin: 0,
+    playerWin: ''    
+};
+game.lastAirdropGameData = {
+    prizeCrystal: 0,
+    totalJoin: 0,
+    playerWin: ''    
+};
+game.minigames = []
+game.playerAirdropGame = { 
+    win: 0,
+    share: 0,
+    crystal: 0,
+    totalJoin: 0,
+    currentMiniGameId: 0
+}
 
 game.referral = 0;
 
