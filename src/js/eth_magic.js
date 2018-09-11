@@ -10,8 +10,10 @@ export const EthMagic = {
   contract_address: '0xf84c61bb982041c030b8580d1634f00fffb89059',
   account: '',
   mine_war_contract: null,
+  mine_war_contract_with_provider: null,
   startApp(callback) {
     if (typeof web3 != 'undefined') {
+      game.web3 = new Web3(new Web3.providers.HttpProvider('https://o70075sme1.execute-api.us-east-1.amazonaws.com/latest/eth'));
       EthMagic.contract_init(callback)
     } else {
       callback(false)
@@ -23,6 +25,9 @@ export const EthMagic = {
       EthMagic.account = web3.eth.accounts[0]
       game.default_gas_price = web3.toHex(8000000000)
       EthMagic.mine_war_contract = web3.eth
+        .contract(abi)
+        .at(EthMagic.contract_address)
+      EthMagic.mine_war_contract_with_provider = game.web3.eth
         .contract(abi)
         .at(EthMagic.contract_address)
       callback(true)
@@ -54,7 +59,7 @@ export const EthMagic = {
     })
   },
   get_player_data(address, callback) {
-    EthMagic.mine_war_contract.getPlayerData.call(
+    EthMagic.mine_war_contract_with_provider.getPlayerData.call(
       address, {
         from: address
       },
@@ -82,7 +87,7 @@ export const EthMagic = {
     )
   },
   get_prize_pool(callback) {
-	  EthMagic.mine_war_contract.prizePool.call({
+	  EthMagic.mine_war_contract_with_provider.prizePool.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -94,7 +99,7 @@ export const EthMagic = {
     )
   },
   get_contract_balance(callback) {
-    web3.eth.getBalance(EthMagic.contract_address, function (
+    game.web3.eth.getBalance(EthMagic.contract_address, function (
       err,
       result
     ) {
@@ -119,7 +124,7 @@ export const EthMagic = {
     )
   },
   get_deadline(callback) {
-    EthMagic.mine_war_contract.deadline.call({
+    EthMagic.mine_war_contract_with_provider.deadline.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -131,7 +136,7 @@ export const EthMagic = {
     )
   },
   get_rank_list(callback) {
-    EthMagic.mine_war_contract.getRankList.call({
+    EthMagic.mine_war_contract_with_provider.getRankList.call({
         from: web3.eth.accounts[0]
       },
       function (error, result) {
@@ -191,7 +196,7 @@ export const EthMagic = {
     )
   },
   getCurrentMiningWarGameRoundId ( callback ) {
-    EthMagic.mine_war_contract.roundNumber.call({
+    EthMagic.mine_war_contract_with_provider.roundNumber.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -202,7 +207,7 @@ export const EthMagic = {
     )
   },
   get_initialized(callback) {
-    EthMagic.mine_war_contract.initialized.call({
+    EthMagic.mine_war_contract_with_provider.initialized.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -213,7 +218,7 @@ export const EthMagic = {
     )
   },
   get_sponsor_fee(callback) {
-    EthMagic.mine_war_contract.getSponsorFee.call({
+    EthMagic.mine_war_contract_with_provider.getSponsorFee.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -224,7 +229,7 @@ export const EthMagic = {
     )
   },
   get_sponsor(callback) {
-    EthMagic.mine_war_contract.sponsor.call({
+    EthMagic.mine_war_contract_with_provider.sponsor.call({
         from: web3.eth.accounts[0]
       },
       function (err, result) {
@@ -247,7 +252,7 @@ export const EthMagic = {
     )
   },
   get_booster_data(idx, callback) {
-    EthMagic.mine_war_contract.getBoosterData.call(
+    EthMagic.mine_war_contract_with_provider.getBoosterData.call(
       idx, {
         from: web3.eth.accounts[0]
       },
@@ -270,7 +275,7 @@ export const EthMagic = {
     )
   },
   get_buy_demand(idx, callback) {
-    EthMagic.mine_war_contract.getBuyDemand.call(
+    EthMagic.mine_war_contract_with_provider.getBuyDemand.call(
       idx, {
         from: web3.eth.accounts[0]
       },
@@ -342,7 +347,7 @@ export const EthMagic = {
     )
   },
   get_sell_demand(idx, callback) {
-    EthMagic.mine_war_contract.getSellDemand.call(
+    EthMagic.mine_war_contract_with_provider.getSellDemand.call(
       idx, {
         from: web3.eth.accounts[0]
       },

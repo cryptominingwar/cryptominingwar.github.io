@@ -1,5 +1,7 @@
 game = [];
 
+game.web3 = {};
+
 game.default_gas_price = 0;
 
 game.CRTSTAL_MINING_PERIOD = 86400;

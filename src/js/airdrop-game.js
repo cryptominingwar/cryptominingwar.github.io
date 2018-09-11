@@ -7,6 +7,7 @@ export const AirdropGame = {
   contract_address: '0x5b813a2f4b58183d270975ab60700740af00a3c9',
   //contract_address: '0xe06a2ae710004780026aab950f2d4290bc7b43bc',
   miniGameContract: null,
+  miniGameContract_with_provider: null,
   startAirdropGame(callback) {
     if (typeof web3 != 'undefined') {
       AirdropGame.contract_init(callback)
@@ -17,6 +18,9 @@ export const AirdropGame = {
   contract_init(callback) {
     if (typeof web3.eth.accounts[0] != 'undefined') {
       AirdropGame.miniGameContract = web3.eth
+        .contract(abi)
+        .at(AirdropGame.contract_address)
+      AirdropGame.miniGameContract_with_provider = game.web3.eth
         .contract(abi)
         .at(AirdropGame.contract_address)
       callback(true)
@@ -39,7 +43,7 @@ export const AirdropGame = {
     );
   },
   getCurrentMiniGameId( callback ) {
-    AirdropGame.miniGameContract.miniGameId.call({
+    AirdropGame.miniGameContract_with_provider.miniGameId.call({
         from: web3.eth.accounts[0]
     },
     function (err, result) {
@@ -48,7 +52,7 @@ export const AirdropGame = {
     );
   },
   getMiniGame ({ miniGameId }, callback ) {
-     AirdropGame.miniGameContract.minigames.call(
+     AirdropGame.miniGameContract_with_provider.minigames.call(
       miniGameId,
       {
           from: web3.eth.accounts[0]
@@ -59,7 +63,7 @@ export const AirdropGame = {
     );
   },
   getPlayerAirdropGameData ( callback ) {
-    AirdropGame.miniGameContract.players.call(
+    AirdropGame.miniGameContract_with_provider.players.call(
       web3.eth.accounts[0],
       {
           from: web3.eth.accounts[0]
@@ -70,7 +74,7 @@ export const AirdropGame = {
     );
   },
   getShareCrystalByMiniGameId ( { miniGameId }, callback ) {
-    AirdropGame.miniGameContract.calculateShareCrystal.call(
+    AirdropGame.miniGameContract_with_provider.calculateShareCrystal.call(
       miniGameId,
       {
           from: web3.eth.accounts[0]
