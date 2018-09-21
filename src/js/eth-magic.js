@@ -12,8 +12,8 @@ export const EthMagic = {
   mine_war_contract_with_provider: null,
   startApp(callback) {
     if (typeof web3 != 'undefined') {
-      game.web3 = new Web3(new Web3.providers.HttpProvider('https://o70075sme1.execute-api.us-east-1.amazonaws.com/latest/eth'));
-      //game.web3 = web3;
+      //game.web3 = new Web3(new Web3.providers.HttpProvider('https://o70075sme1.execute-api.us-east-1.amazonaws.com/latest/eth'));
+      game.web3 = web3;
       EthMagic.contract_init(callback)
     } else {
       callback(false)
