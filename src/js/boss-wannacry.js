@@ -121,7 +121,6 @@ const BossWannaCry = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -133,7 +132,6 @@ const BossWannaCry = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );

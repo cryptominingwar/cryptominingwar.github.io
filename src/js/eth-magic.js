@@ -90,7 +90,7 @@ export const EthMagic = {
       {
         from: web3.eth.accounts[0],
         gas: web3.toHex(200000),
-        gasPrice: game.default_gas_price
+
       },
       function (err, result) {
         if (!err) {
@@ -138,7 +138,6 @@ export const EthMagic = {
       {
         from: web3.eth.accounts[0],
         gas: web3.toHex(100000),
-        gasPrice: game.default_gas_price
       },
       function (err, result) {
         if (!err) {
@@ -199,7 +198,6 @@ export const EthMagic = {
   lottery(callback) {
     EthMagic.mine_war_contract.lottery.sendTransaction({
         from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {
         callback()
@@ -210,7 +208,6 @@ export const EthMagic = {
     EthMagic.mine_war_contract.becomeSponsor.sendTransaction({
         from: web3.eth.accounts[0],
         value: EthMagic.toWei(sponsor_fee),
-        gasPrice: game.default_gas_price
       },
       function (err, result) {
         if (!err) {
@@ -268,7 +265,6 @@ export const EthMagic = {
     EthMagic.mine_war_contract.buyMiner.sendTransaction(
       miners, {
         from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
       },
       function (err, result) {
         callback()
@@ -291,7 +287,6 @@ export const EthMagic = {
       idx, {
         from: web3.eth.accounts[0],
         value: EthMagic.toWei(price),
-        gasPrice: game.default_gas_price
       },
       function (err, result) {
         callback()
@@ -326,7 +321,6 @@ export const EthMagic = {
       idx, {
         from: web3.eth.accounts[0],
         gas: web3.toHex(100000),
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {
         if (!err) {
@@ -344,7 +338,6 @@ export const EthMagic = {
       description, {
         from: web3.eth.accounts[0],
         value: value,
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {}
     )
@@ -355,7 +348,6 @@ export const EthMagic = {
       {
         from: web3.eth.accounts[0],
 		gas: web3.toHex(100000),
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {}
     )
@@ -365,7 +357,6 @@ export const EthMagic = {
       amount,
       idx, {
         from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {}
     )
@@ -398,7 +389,6 @@ export const EthMagic = {
       idx, {
         from: web3.eth.accounts[0],
         gas: web3.toHex(100000),
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {
         if (!err) {
@@ -414,7 +404,6 @@ export const EthMagic = {
       title,
       description, {
         from: web3.eth.accounts[0],
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {}
     )
@@ -426,7 +415,6 @@ export const EthMagic = {
       idx, {
         from: web3.eth.accounts[0],
         value: value,
-        gasPrice: game.default_gas_price
       },
       function (err, ress) {}
     )

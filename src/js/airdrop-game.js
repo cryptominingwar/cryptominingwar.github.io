@@ -32,7 +32,6 @@ export const AirdropGame = {
         {
           from: web3.eth.accounts[0],
           gas: web3.toHex(400000),
-          gasPrice: game.default_gas_price
         },
         function (err, result) {
           if (!err) {
@@ -98,7 +97,6 @@ export const AirdropGame = {
         {
           from: web3.eth.accounts[0],
           gas: web3.toHex(400000),
-          gasPrice: game.default_gas_price
         },
         function (err, result) {
           if (!err) {

@@ -40,6 +40,8 @@ game.boostData[4] = { "owner": '', "boostRate": 250, "price": 0.01 };
 
 game.miningWarRoundNumber = 0;
 
+game.currentCrystals = 0;
+
 game.referral = 0;
 
 game.CRTSTAL_MINING_PERIOD = 86400;

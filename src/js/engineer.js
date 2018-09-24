@@ -197,7 +197,6 @@ const EngineerGame = {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
           "value": Web3.toWei(gameSponsorFee),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -211,7 +210,6 @@ const EngineerGame = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -224,7 +222,6 @@ const EngineerGame = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -236,7 +233,6 @@ const EngineerGame = {
         boosterId, {
           "from": Web3.getAccount(),
           "value": Web3.toWei(price),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {
           return callback(err, result);
@@ -252,7 +248,6 @@ const EngineerGame = {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
           "value": Web3.toWei(eth),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -265,7 +260,6 @@ const EngineerGame = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(400000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {}
       );
@@ -277,7 +271,6 @@ const EngineerGame = {
         {
           "from": Web3.getAccount(),
           "gas": Web3.toHex(100000),
-          "gasPrice": game.default_gas_price
         },
         function (err, result) {
           if (!err) {
