@@ -93,6 +93,7 @@ game.players = [];
 // game sponsor info
 game.gameSponsor = "";
 game.gameSponsorPrice = 0;
+game.engineerPrizePool = 0;
 
 game.engineerPlayer = {
     "engineerRoundNumber": 0,
@@ -165,6 +166,30 @@ game.lastBossWannaCry = {
 game.dameCurrentBossWannaCry = 0;
 
 game.yourRewardBossWannaCry = 0;
+/** ----------------------------------------------------------------------
+* CRYSTALS CONTRIBUTIONS INFORMATION
+* ------------------------------------------------------------------------
+*/
+game.crystalsShareRound = 0;
+
+game.minShare = 10000;
+
+game.yourRewardCrystalsShare = 0;
+  
+game.currentCrystalsShare = {
+    "round": 0,
+    "crystals": 0,
+    "prizePool": 0,
+    "endTime": 0,
+    "ended": false
+};
+
+game.crystalsSharePlayer = {
+    "currentRound": 0,
+    "lastRound": 0,
+    "reward": 0,
+    "share": 0 
+};
 
 
 // buy and sell info not use in current version
