@@ -1,5 +1,5 @@
 import { abi } from "./contract/minigames/crystals-deposit";
-import Web3 from "./web-3";
+import MYWeb3 from "./web-3";
 const Config = require("../../../config/config");
 
 const CrystalsDeposit = {
@@ -19,7 +19,7 @@ const CrystalsDeposit = {
     return this.init(callback);
   },
   init(callback) {
-    if ( typeof Web3.getAccount() == 'undefined' ) return callback(false);
+    if ( typeof MYWeb3.getAccount() == 'undefined' ) return callback(false);
     // init
     this.CONTRACT = web3.eth
         .contract(abi)
@@ -37,18 +37,18 @@ const CrystalsDeposit = {
     this.CONTRACT_WITH_PROVIDER
       .getData
       .call(
-        Web3.getAccount(),
+        MYWeb3.getAccount(),
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if (err) return callback(err, null);
           let depositData = {
-             "prizePool": Web3.toETH(result[0].toNumber()),
+             "prizePool": MYWeb3.toETH(result[0].toNumber()),
              "crystals": result[1].toNumber() / 86400,
              "endTime": result[2].toNumber(),
             // player info
-             "reward": Web3.toETH(result[3].toNumber()),
+             "reward": MYWeb3.toETH(result[3].toNumber()),
              "share": result[4].toNumber() / 86400,
              "questSequence": result[5].toNumber(),
                 // current quest of player
@@ -74,8 +74,8 @@ const CrystalsDeposit = {
       .sendTransaction(
         crystals,
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000)
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000)
         },
         function (err, result) {}
       );
@@ -84,10 +84,10 @@ const CrystalsDeposit = {
     this.CONTRACT
       .confirmQuest
       .sendTransaction(
-        Web3.getAccount(),
+        MYWeb3.getAccount(),
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000)
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000)
         },
         function (err, result) {}
       );
@@ -96,10 +96,10 @@ const CrystalsDeposit = {
     this.CONTRACT
       .freeResetQuest
       .sendTransaction(
-        Web3.getAccount(),
+        MYWeb3.getAccount(),
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
@@ -108,11 +108,11 @@ const CrystalsDeposit = {
     this.CONTRACT
       .instantResetQuest
       .sendTransaction(
-        Web3.getAccount(),
+        MYWeb3.getAccount(),
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
-          "value": Web3.toWei(0.005)
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
+          "value": MYWeb3.toWei(0.005)
         },
         function (err, result) {}
       );
@@ -122,8 +122,8 @@ const CrystalsDeposit = {
       .withdrawReward
       .sendTransaction(
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );

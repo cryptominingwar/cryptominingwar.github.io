@@ -1,5 +1,5 @@
 import { abi } from "./contract/minigames/boss-wannacry";
-import Web3 from "./web-3";
+import MYWeb3 from "./web-3";
 const Config = require("../../../config/config");
 
 const BossWannaCry = {
@@ -19,7 +19,7 @@ const BossWannaCry = {
     return this.init(callback);
   },
   init(callback) {
-    if ( typeof Web3.getAccount() == 'undefined' ) return callback(false);
+    if ( typeof MYWeb3.getAccount() == 'undefined' ) return callback(false);
     // init
     this.CONTRACT = web3.eth
         .contract(abi)
@@ -38,7 +38,7 @@ const BossWannaCry = {
       .bossRoundNumber
       .call(
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if ( err ) return callback(err, null);
@@ -53,7 +53,7 @@ const BossWannaCry = {
         address,
         bossRoundNumber,
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if ( err ) return callback(err, null);
@@ -67,7 +67,7 @@ const BossWannaCry = {
       .call(
         bossRoundNumber,
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if (err) return callback(err, null);
@@ -76,7 +76,7 @@ const BossWannaCry = {
              "bossRoundNumber": result[0].toNumber(),
              "bossHp": result[1].toNumber(),
              "def": result[2].toNumber(),
-             "prizePool": Web3.toETH(result[3].toNumber()),
+             "prizePool": MYWeb3.toETH(result[3].toNumber()),
              "playerLastAtk": result[4],
              "totalDame": result[5].toNumber(),
              "ended": result[6]
@@ -91,7 +91,7 @@ const BossWannaCry = {
       .call(
         address,
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if (err) return callback(err, null);
@@ -119,8 +119,8 @@ const BossWannaCry = {
       .sendTransaction(
         virusAttack,
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
@@ -130,8 +130,8 @@ const BossWannaCry = {
       .withdrawReward
       .sendTransaction(
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );

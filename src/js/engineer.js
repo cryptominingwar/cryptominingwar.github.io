@@ -1,5 +1,5 @@
 import { abi } from "./contract/minigames/engineer";
-import Web3 from "./web-3";
+import MYWeb3 from "./web-3";
 const Config = require("../../../config/config");
 
 const EngineerGame = {
@@ -19,7 +19,7 @@ const EngineerGame = {
     return this.init(callback);
   },
   init(callback) {
-    if ( typeof Web3.getAccount() == 'undefined' ) return callback(false);
+    if ( typeof MYWeb3.getAccount() == 'undefined' ) return callback(false);
     // init
     this.CONTRACT = web3.eth
         .contract(abi)
@@ -39,7 +39,7 @@ const EngineerGame = {
       .call(
         address,
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           if ( err ) return ( err, null );
@@ -54,7 +54,7 @@ const EngineerGame = {
         atkAddress,
         defAddress,
         {
-          "from": Web3.getAccount(),
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
           return callback(err, result);
@@ -67,7 +67,7 @@ const EngineerGame = {
        .call(
           playerAddess,
           {
-              "from": Web3.getAccount()
+              "from": MYWeb3.getAccount()
           },
           function (err, result) {
             if ( err ) return callback( err, false );
@@ -83,7 +83,7 @@ const EngineerGame = {
       .gameSponsor
       .call( 
         {
-          "from": Web3.getAccount()
+          "from": MYWeb3.getAccount()
         },
         function (err, result) {
           if ( err ) return callback( err, null );
@@ -96,11 +96,11 @@ const EngineerGame = {
       .gameSponsorPrice
       .call( 
         {
-          "from": Web3.getAccount()
+          "from": MYWeb3.getAccount()
         },
         function (err, result) {
           if ( err ) return callback( err, null );
-          return callback( null, Web3.toETH(result.toNumber()));
+          return callback( null, MYWeb3.toETH(result.toNumber()));
         }
       );
   },
@@ -109,11 +109,11 @@ const EngineerGame = {
       .prizePool
       .call( 
         {
-          "from": Web3.getAccount()
+          "from": MYWeb3.getAccount()
         },
         function (err, result) {
           if ( err ) return callback( err, null );
-          return callback( null, Web3.toETH(result.toNumber()));
+          return callback( null, MYWeb3.toETH(result.toNumber()));
         }
       );
   },
@@ -123,10 +123,10 @@ const EngineerGame = {
       .call(
         boosterId, 
         {
-          "from": Web3.getAccount()
+          "from": MYWeb3.getAccount()
         },
         function (err, result) {
-          callback(boosterId, result[0], Web3.toETH(parseInt(result[2])))
+          callback(boosterId, result[0], MYWeb3.toETH(parseInt(result[2])))
         }
       );
   },
@@ -136,7 +136,7 @@ const EngineerGame = {
       .call(
         engineerId,
         {
-          "from": Web3.getAccount()
+          "from": MYWeb3.getAccount()
         },
         function (err, result) {
           return callback( err, result );
@@ -148,7 +148,7 @@ const EngineerGame = {
       .engineerRoundNumber
       .call(
         {
-            "from": Web3.getAccount()
+            "from": MYWeb3.getAccount()
         },
         function (err, result) {
             return callback( err, result );
@@ -161,7 +161,7 @@ const EngineerGame = {
       .call(
         playerAddess,
         {
-            "from": Web3.getAccount()
+            "from": MYWeb3.getAccount()
         },
         function (err, result) {
           if ( err ) return ( err, null );
@@ -194,9 +194,9 @@ const EngineerGame = {
       .becomeGameSponsor
       .sendTransaction(
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
-          "value": Web3.toWei(gameSponsorFee),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
+          "value": MYWeb3.toWei(gameSponsorFee),
         },
         function (err, result) {}
       );
@@ -208,8 +208,8 @@ const EngineerGame = {
         pAtkAddress, 
         virusAttack,
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
@@ -220,8 +220,8 @@ const EngineerGame = {
       .sendTransaction(
         virusDefence, 
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
@@ -231,8 +231,8 @@ const EngineerGame = {
       .buyBooster
       .sendTransaction(
         boosterId, {
-          "from": Web3.getAccount(),
-          "value": Web3.toWei(price),
+          "from": MYWeb3.getAccount(),
+          "value": MYWeb3.toWei(price),
         },
         function (err, result) {
           return callback(err, result);
@@ -245,9 +245,9 @@ const EngineerGame = {
       .sendTransaction(
         engineerCount,
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
-          "value": Web3.toWei(eth),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
+          "value": MYWeb3.toWei(eth),
         },
         function (err, result) {}
       );
@@ -258,8 +258,8 @@ const EngineerGame = {
       .claimReward
       .sendTransaction(
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(400000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
@@ -269,8 +269,8 @@ const EngineerGame = {
       .withdrawPayments
       .sendTransaction(
         {
-          "from": Web3.getAccount(),
-          "gas": Web3.toHex(100000),
+          "from": MYWeb3.getAccount(),
+          "gas": MYWeb3.toHex(100000),
         },
         function (err, result) {
           if (!err) {
