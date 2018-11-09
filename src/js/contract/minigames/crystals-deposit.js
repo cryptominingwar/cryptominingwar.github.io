@@ -3,39 +3,11 @@ export const abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "setAirdropGameInterface",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
 				"name": "addr",
 				"type": "address"
 			}
 		],
 		"name": "upgrade",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "confirmQuest",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -70,6 +42,43 @@ export const abi = [
 			{
 				"name": "ended",
 				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "round",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"name": "_round",
+				"type": "uint256"
+			}
+		],
+		"name": "calculateReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -119,38 +128,34 @@ export const abi = [
 			{
 				"name": "_share",
 				"type": "uint256"
-			},
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "miningWarDeadline",
+		"outputs": [
 			{
-				"name": "_questSequence",
+				"name": "",
 				"type": "uint256"
-			},
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "HALF_TIME",
+		"outputs": [
 			{
-				"name": "_deposit",
+				"name": "",
 				"type": "uint256"
-			},
-			{
-				"name": "_resetFreeTime",
-				"type": "uint256"
-			},
-			{
-				"name": "_typeQuest",
-				"type": "uint256"
-			},
-			{
-				"name": "_numberOfTimes",
-				"type": "uint256"
-			},
-			{
-				"name": "_number",
-				"type": "uint256"
-			},
-			{
-				"name": "_isFinish",
-				"type": "bool"
-			},
-			{
-				"name": "_haveQuest",
-				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -173,101 +178,16 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [
+		"inputs": [],
+		"name": "Engineer",
+		"outputs": [
 			{
 				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "playersQuests",
-		"outputs": [
-			{
-				"name": "haveQuest",
-				"type": "bool"
-			},
-			{
-				"name": "questId",
-				"type": "uint256"
-			},
-			{
-				"name": "level",
-				"type": "uint256"
-			},
-			{
-				"name": "numberOfTimes",
-				"type": "uint256"
-			},
-			{
-				"name": "deposit",
-				"type": "uint256"
-			},
-			{
-				"name": "miningWarRound",
-				"type": "uint256"
-			},
-			{
-				"name": "referralCount",
-				"type": "uint256"
-			},
-			{
-				"name": "totalMiner",
-				"type": "uint256"
-			},
-			{
-				"name": "totalEngineer",
-				"type": "uint256"
-			},
-			{
-				"name": "airdropGameId",
-				"type": "uint256"
-			},
-			{
-				"name": "totalJoinAirdrop",
-				"type": "uint256"
-			},
-			{
-				"name": "nextTimeAtkPlayer",
-				"type": "uint256"
-			},
-			{
-				"name": "dameBossWannaCry",
-				"type": "uint256"
-			},
-			{
-				"name": "levelBossWannaCry",
-				"type": "uint256"
-			}
-		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "freeResetQuest",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "instantResetQuest",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -303,6 +223,20 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "MiningWar",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [],
 		"name": "withdrawReward",
@@ -313,24 +247,11 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "checkQuest",
+		"inputs": [],
+		"name": "CRTSTAL_MINING_PERIOD",
 		"outputs": [
 			{
-				"name": "_isFinish",
-				"type": "bool"
-			},
-			{
-				"name": "_numberOfTimes",
-				"type": "uint256"
-			},
-			{
-				"name": "_number",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -342,55 +263,6 @@ export const abi = [
 		"constant": false,
 		"inputs": [],
 		"name": "startGame",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "quests",
-		"outputs": [
-			{
-				"name": "typeQuest",
-				"type": "uint256"
-			},
-			{
-				"name": "levelOne",
-				"type": "uint256"
-			},
-			{
-				"name": "levelTwo",
-				"type": "uint256"
-			},
-			{
-				"name": "levelThree",
-				"type": "uint256"
-			},
-			{
-				"name": "levelFour",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "setBossWannaCryInterface",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -421,18 +293,6 @@ export const abi = [
 			{
 				"name": "share",
 				"type": "uint256"
-			},
-			{
-				"name": "questSequence",
-				"type": "uint256"
-			},
-			{
-				"name": "totalQuestFinish",
-				"type": "uint256"
-			},
-			{
-				"name": "resetFreeTime",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -442,7 +302,7 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getGameSponsor",
+		"name": "administrator",
 		"outputs": [
 			{
 				"name": "",
@@ -527,41 +387,19 @@ export const abi = [
 				"indexed": false,
 				"name": "deposit",
 				"type": "uint256"
-			}
-		],
-		"name": "AddPlayerQuest",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "player",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "questId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "questLv",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "deposit",
-				"type": "uint256"
 			},
 			{
 				"indexed": false,
 				"name": "bonus",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "percent",
+				"type": "uint256"
 			}
 		],
-		"name": "ConfirmQuest",
+		"name": "Deposit",
 		"type": "event"
 	}
 ];

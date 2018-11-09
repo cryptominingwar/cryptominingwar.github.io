@@ -178,16 +178,7 @@ game.depositData = {
      "endTime": 0,
     // player info
      "reward": 0,
-     "share": 0,
-     "questSequence": 0,
-        // current quest of player
-     "deposit": 0,
-     "resetFreeTime": 0,
-     "typeQuest": 0,
-     "numberOfTimes": 0, 
-     "number": 0,
-     "isFinish": false,
-     "haveQuest": true
+     "share": 0     
 }; 
 
 // buy and sell info not use in current version

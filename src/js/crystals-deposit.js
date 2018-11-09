@@ -49,16 +49,7 @@ const CrystalsDeposit = {
              "endTime": result[2].toNumber(),
             // player info
              "reward": MYWeb3.toETH(result[3].toNumber()),
-             "share": result[4].toNumber() / 86400,
-             "questSequence": result[5].toNumber(),
-                // current quest of player
-             "deposit": result[6].toNumber() / 86400,
-             "resetFreeTime": result[7].toNumber(),
-             "typeQuest": result[8].toNumber(),
-             "numberOfTimes": result[9].toNumber(), 
-             "number": result[10].toNumber(),
-             "isFinish": result[11],
-             "haveQuest": result[12]
+             "share": result[4].toNumber() / 86400
           };
           return callback(null, depositData);
         }
@@ -76,43 +67,6 @@ const CrystalsDeposit = {
         {
           "from": MYWeb3.getAccount(),
           "gas": MYWeb3.toHex(400000)
-        },
-        function (err, result) {}
-      );
-  },
-  confirmQuest() {
-    this.CONTRACT
-      .confirmQuest
-      .sendTransaction(
-        MYWeb3.getAccount(),
-        {
-          "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000)
-        },
-        function (err, result) {}
-      );
-  },
-  freeResetQuest() {
-    this.CONTRACT
-      .freeResetQuest
-      .sendTransaction(
-        MYWeb3.getAccount(),
-        {
-          "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000),
-        },
-        function (err, result) {}
-      );
-  },
-  instantResetQuest() {
-    this.CONTRACT
-      .instantResetQuest
-      .sendTransaction(
-        MYWeb3.getAccount(),
-        {
-          "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000),
-          "value": MYWeb3.toWei(0.005)
         },
         function (err, result) {}
       );
