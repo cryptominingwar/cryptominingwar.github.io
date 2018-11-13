@@ -180,6 +180,16 @@ game.depositData = {
      "reward": 0,
      "share": 0     
 }; 
+/** ----------------------------------------------------------------------
+* BEGINNER QUEST INFORMATION
+* ------------------------------------------------------------------------
+*/
+game.beginnerQuestData = {
+    "miningWarRound": 0,
+    "currentQuest": 0,
+    "isFinish": false,
+    "endedQuest": false
+};
 
 // buy and sell info not use in current version
 
