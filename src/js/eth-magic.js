@@ -151,6 +151,9 @@ export const EthMagic = {
         from: web3.eth.accounts[0]
       },
       function (err, result) {
+		if(parseInt(result) === 0) {
+			err = true;
+		}
         if (!err) {
           game.deadline = parseInt(result)
           callback(game.deadline)

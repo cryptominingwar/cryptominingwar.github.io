@@ -164,6 +164,10 @@ const EngineerGame = {
             "from": MYWeb3.getAccount()
         },
         function (err, result) {
+		  console.log(result[1].toNumber());
+	      if(result[1].toNumber() === 0) {
+			  err = true;
+		  };
           if ( err ) return ( err, null );
           let engineers = [];
           for ( let i = 0; i < 8; i++ ) {

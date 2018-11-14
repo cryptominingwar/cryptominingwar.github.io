@@ -70,6 +70,9 @@ const BossWannaCry = {
           "from": MYWeb3.getAccount(),
         },
         function (err, result) {
+		  if(MYWeb3.toETH(result[3].toNumber()) === 0) {
+			  err = true;
+		  }
           if (err) return callback(err, null);
 
           let currentBoss = {
