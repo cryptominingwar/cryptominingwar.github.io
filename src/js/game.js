@@ -190,7 +190,64 @@ game.beginnerQuestData = {
     "isFinish": false,
     "endedQuest": false
 };
+/** ----------------------------------------------------------------------
+* PROGRAMS FACTORY INFORMATION
+* ------------------------------------------------------------------------
+*/
+game.factoryData = {
+    'factoryTotal': 0,
+    'factoryLevel': 0,
+    'factoryTime': 0,
+    'programs': []
+};
+game.programsValue = [];
+game.programsValue[0] = 15; // +15% virus atk
+game.programsValue[1] = 20; // +20% dame
+game.programsValue[2] = 20; // revival 20 % virus if atk lose
+game.programsValue[3] = 5; // sub 5 % virus defence
 
+game.programPriceByCrystals = [];
+game.programPriceByCrystals[0] = 10000;
+game.programPriceByCrystals[1] = 20000;
+game.programPriceByCrystals[2] = 40000;
+game.programPriceByCrystals[3] = 80000;
+
+game.updateFactoryInfo = {
+    1: {
+        'crystals': 100000,
+        'eth': 0,
+        'time': '8 hours'
+    },  // up to level 1
+    2: {
+        'crystals': 500000,
+        'eth': 0.1,
+        'time': '16 hours'
+    },  // up to level 2
+    3: {
+        'crystals': 1500000,
+        'eth': 0.4,
+        'time': '24 hours'
+    },  // up to level 3
+    4: {
+        'crystals': 3000000,
+        'eth': 0.5,
+        'time': '48 hours'
+    }   // up to level 4
+};
+/** ----------------------------------------------------------------------
+* ARENA INFORMATION
+* ------------------------------------------------------------------------
+*/
+game.arenaData = {
+    'virusDef': 0,
+    'nextTimeAtk': 0,
+    'endTimeUnequalledDef': 0,
+    'canAtk': false,
+        // engineer
+    'currentVirus': 0, 
+        // mingin war
+    'currentCrystals': 0
+}
 // buy and sell info not use in current version
 
 game.sellOrderData = [];
