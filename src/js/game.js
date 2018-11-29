@@ -216,22 +216,22 @@ game.updateFactoryInfo = {
     1: {
         'crystals': 100000,
         'eth': 0,
-        'time': '8 hours'
+        'time': '4 hours'
     },  // up to level 1
     2: {
         'crystals': 500000,
         'eth': 0.1,
-        'time': '16 hours'
+        'time': '8 hours'
     },  // up to level 2
     3: {
         'crystals': 1500000,
         'eth': 0.4,
-        'time': '24 hours'
+        'time': '12 hours'
     },  // up to level 3
     4: {
         'crystals': 3000000,
         'eth': 0.5,
-        'time': '48 hours'
+        'time': '24 hours'
     }   // up to level 4
 };
 /** ----------------------------------------------------------------------
