@@ -194,14 +194,15 @@ const EngineerGame = {
             "from": MYWeb3.getAccount()
         },
         function (err, result) {
-        if(result[1].toNumber() === 0) {
-  			  err = true;
-  		  };
-          if ( err ) return ( err, null );
+          if ( err ) return callback( err, null );
           let engineers = [];
+          let hasEngineers = false;
+
           for ( let i = 0; i < 8; i++ ) {
             engineers[i] = result[6][i].toNumber();
+            if (engineers[i] != 0) hasEngineers = true;
           }
+          if (hasEngineers == false) return callback(true, null); 
           let playerData = {
             "engineerRoundNumber": result[0].toNumber(),
             "virusNumber": result[1].toNumber(),
