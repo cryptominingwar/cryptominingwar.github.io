@@ -198,7 +198,7 @@ game.factoryData = {
     'factoryTotal': 0,
     'factoryLevel': 0,
     'factoryTime': 0,
-    'programs': []
+    'programs': [0, 0, 0, 0]
 };
 game.programsValue = [];
 game.programsValue[0] = 15; // +15% virus atk
