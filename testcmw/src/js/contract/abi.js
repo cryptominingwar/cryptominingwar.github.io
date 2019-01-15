@@ -17,6 +17,20 @@ export const abi = [
 		"constant": false,
 		"inputs": [
 			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getFreeMinerForMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "addr",
 				"type": "address"
 			}
@@ -298,7 +312,7 @@ export const abi = [
 		"name": "getCurrentReward",
 		"outputs": [
 			{
-				"name": "_currentReward",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -389,6 +403,25 @@ export const abi = [
 		"constant": true,
 		"inputs": [],
 		"name": "ROUND_TIME",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "boosterReward",
 		"outputs": [
 			{
 				"name": "",
@@ -740,6 +773,20 @@ export const abi = [
 			}
 		],
 		"name": "addCrystal",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setRoundNumber",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",

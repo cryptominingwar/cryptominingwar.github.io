@@ -72,6 +72,20 @@ export const EthMagic = {
         }
       );
   },
+  getBoosterReward(callback) {
+    EthMagic.mine_war_contract_with_provider
+      .boosterReward
+      .call(
+        web3.eth.accounts[0],
+        {
+          "from": web3.eth.accounts[0],
+        },
+        function (err, result) {
+          if ( err ) return callback(err, null);
+          return callback(null, MYWeb3.toETH(result.toNumber()));
+        }
+      );
+  },
   get_player_data(address, callback) {
     EthMagic.mine_war_contract_with_provider.getPlayerData.call(
       address, {

@@ -49,7 +49,7 @@ const LoadEngineerDataOldVersion = {
       .sendTransaction(
         {
           "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000),
+          "gas": MYWeb3.toHex(800000),
         },
         function (err, result) {}
       );

@@ -82,6 +82,7 @@ game.airdropData = {
     lastDayJoin: 0,
     nextTimeAirdropJoin: 0
 };
+game.airdropCrystalReward = 0;
 game.currentAirdropGameData = {
     miningWarRoundNumber: 0,
     ended: 0,
