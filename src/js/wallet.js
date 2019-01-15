@@ -1,20 +1,20 @@
-import { abi } from "./contract/minigames/arena";
+import { abi } from "./contract/minigames/wallet";
 import MYWeb3 from "./web-3";
 const Config = require("../../../config/config");
 
-const Arena = {
+const Wallet = {
   /** ---------------------------------------------------------------------------------------------------------
   *   Engineer Contract Information
   *  ----------------------------------------------------------------------------------------------------------
   */
-  CONTRACT_ADDRESS: Config.arenaContractAddress,
+  CONTRACT_ADDRESS: Config.walletContractAddress,
   CONTRACT: null,
   CONTRACT_WITH_PROVIDER: null,
   /** ---------------------------------------------------------------------------------------------------------
   *   Init Engineer Contract
   *  ----------------------------------------------------------------------------------------------------------
   */
-  startArenaGame(callback) {
+  startWallet(callback) {
     if (typeof web3 == 'undefined') return this(false);
     return this.init(callback);
   },
@@ -33,29 +33,17 @@ const Arena = {
   *   Call To Contract 
   *  ----------------------------------------------------------------------------------------------------------
   */
-  getData({ address }, callback ) {
+  getCurrentReward({ address }, callback ) {
     this.CONTRACT_WITH_PROVIDER
-      .getData
+      .getCurrentReward
       .call(
         address,
         {
-            "from": MYWeb3.getAccount()
+          "from": MYWeb3.getAccount(),
         },
         function (err, result) {
-
           if ( err ) return ( err, null );
-
-          let data = {
-            'virusDef': result[0].toNumber(),
-            'nextTimeAtk': result[1].toNumber(),
-            'endTimeUnequalledDef': result[2].toNumber(),
-            'canAtk': result[3],
-                // engineer
-            'currentVirus': result[4].toNumber(), 
-                // mingin war
-            'currentCrystals': result[5].toNumber()
-          };
-          return callback( err, data );
+          return callback(err, MYWeb3.toETH(result.toNumber()));
         }
       );
   },
@@ -63,34 +51,15 @@ const Arena = {
   *   Send Transaction To Contract
   *  ----------------------------------------------------------------------------------------------------------
   */
-  
-  addVirusDef({ virusDef }) {
+  withdrawReward() {
     this.CONTRACT
-      .addVirusDef
+      .withdrawReward
       .sendTransaction(
-        MYWeb3.getAccount(),
-        virusDef, 
         {
           "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000),
-        },
-        function (err, result) {}
-      );
-  },
-
-  attack({ defAddress, virusAtk, programs }) {
-    this.CONTRACT
-      .attack
-      .sendTransaction(
-        defAddress, 
-        virusAtk,
-        programs,
-        {
-          "from": MYWeb3.getAccount(),
-          "gas": MYWeb3.toHex(400000),
         },
         function (err, result) {}
       );
   }
 }
-export default Arena
+export default Wallet

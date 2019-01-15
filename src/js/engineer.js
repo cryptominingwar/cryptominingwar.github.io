@@ -143,18 +143,6 @@ const EngineerGame = {
         }
       );
   },
-  getEngineerRoundNumber( callback ) {
-    this.CONTRACT_WITH_PROVIDER
-      .engineerRoundNumber
-      .call(
-        {
-            "from": MYWeb3.getAccount()
-        },
-        function (err, result) {
-            return callback( err, result );
-        }
-      );
-  },
   getPlayerDataForDef({ playerAddess }, callback ) {
     this.CONTRACT_WITH_PROVIDER
       .getPlayerData
@@ -167,19 +155,16 @@ const EngineerGame = {
           if ( err ) return callback( err, null );
           let engineers = [];
           for ( let i = 0; i < 8; i++ ) {
-            engineers[i] = result[6][i].toNumber();
+            engineers[i] = result[5][i].toNumber();
           }
           let playerData = {
-            "engineerRoundNumber": result[0].toNumber(),
-            "virusNumber": result[1].toNumber(),
-            "virusDefence": result[2].toNumber(),
-            "research": result[3].toNumber(),
-            "researchPerDay": result[4].toNumber(),
-            "lastUpdateTime": result[5].toNumber(),
+            "virusNumber": result[0].toNumber(),
+            "currentVirus": result[1].toNumber(),
+            "research": result[2].toNumber(),
+            "researchPerDay": result[3].toNumber(),
+            "lastUpdateTime": result[4].toNumber(),
             "engineers": engineers,
             "hasBooster": false,
-            "nextTimeAtk": result[7].toNumber(),
-            "endTimeUnequalledDef": result[8].toNumber()
           };
           return callback( err, playerData );
         }
@@ -199,21 +184,19 @@ const EngineerGame = {
           let hasEngineers = false;
 
           for ( let i = 0; i < 8; i++ ) {
-            engineers[i] = result[6][i].toNumber();
+            engineers[i] = result[5][i].toNumber();
             if (engineers[i] != 0) hasEngineers = true;
           }
           if (hasEngineers == false) return callback(true, null); 
+         
           let playerData = {
-            "engineerRoundNumber": result[0].toNumber(),
-            "virusNumber": result[1].toNumber(),
-            "virusDefence": result[2].toNumber(),
-            "research": result[3].toNumber(),
-            "researchPerDay": result[4].toNumber(),
-            "lastUpdateTime": result[5].toNumber(),
+            "virusNumber": result[0].toNumber(),
+            "currentVirus": result[1].toNumber(),
+            "research": result[2].toNumber(),
+            "researchPerDay": result[3].toNumber(),
+            "lastUpdateTime": result[4].toNumber(),
             "engineers": engineers,
             "hasBooster": false,
-            "nextTimeAtk": result[7].toNumber(),
-            "endTimeUnequalledDef": result[8].toNumber()
           };
           return callback( err, playerData );
         }

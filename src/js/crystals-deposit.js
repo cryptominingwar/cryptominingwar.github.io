@@ -33,6 +33,20 @@ const CrystalsDeposit = {
   *   Call To Contract 
   *  ----------------------------------------------------------------------------------------------------------
   */
+  getCurrentReward(callback ) {
+    this.CONTRACT_WITH_PROVIDER
+      .getCurrentReward
+      .call(
+        MYWeb3.getAccount(),
+        {
+          "from": MYWeb3.getAccount(),
+        },
+        function (err, result) {
+          if ( err ) return callback(err, null);
+          return callback(null, MYWeb3.toETH(result.toNumber()));
+        }
+      );
+  },
   getData(callback) {
     this.CONTRACT_WITH_PROVIDER
       .getData
@@ -43,15 +57,16 @@ const CrystalsDeposit = {
         },
         function (err, result) {
           if (err) return callback(err, null);
-          let depositData = {
+          let data = {
              "prizePool": MYWeb3.toETH(result[0].toNumber()),
              "crystals": result[1].toNumber() / 86400,
-             "endTime": result[2].toNumber(),
+             "startTime": result[2].toNumber(),
+             "endTime": result[3].toNumber(),
             // player info
-             "reward": MYWeb3.toETH(result[3].toNumber()),
-             "share": result[4].toNumber() / 86400
+             "reward": MYWeb3.toETH(result[4].toNumber()),
+             "share": result[5].toNumber() / 86400
           };
-          return callback(null, depositData);
+          return callback(null, data);
         }
       );
   },

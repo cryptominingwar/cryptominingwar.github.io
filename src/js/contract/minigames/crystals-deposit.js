@@ -36,6 +36,10 @@ export const abi = [
 				"type": "uint256"
 			},
 			{
+				"name": "startTime",
+				"type": "uint256"
+			},
+			{
 				"name": "endTime",
 				"type": "uint256"
 			},
@@ -118,6 +122,10 @@ export const abi = [
 				"type": "uint256"
 			},
 			{
+				"name": "_startTime",
+				"type": "uint256"
+			},
+			{
 				"name": "_endTime",
 				"type": "uint256"
 			},
@@ -136,11 +144,16 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "miningWarDeadline",
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getCurrentReward",
 		"outputs": [
 			{
-				"name": "",
+				"name": "_currentReward",
 				"type": "uint256"
 			}
 		],
@@ -170,10 +183,71 @@ export const abi = [
 				"type": "address"
 			}
 		],
+		"name": "setContractsMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
 		"name": "setMiningWarInterface",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "removeContractMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "miniGames",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "MIN_TIME_WITH_DEADLINE",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -188,6 +262,20 @@ export const abi = [
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "withdrawReward",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -239,29 +327,6 @@ export const abi = [
 	{
 		"constant": false,
 		"inputs": [],
-		"name": "withdrawReward",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "CRTSTAL_MINING_PERIOD",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
 		"name": "startGame",
 		"outputs": [],
 		"payable": false,
@@ -297,6 +362,20 @@ export const abi = [
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "isDepositContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -358,6 +437,11 @@ export const abi = [
 			},
 			{
 				"indexed": false,
+				"name": "startTime",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
 				"name": "endTime",
 				"type": "uint256"
 			}
@@ -375,12 +459,7 @@ export const abi = [
 			},
 			{
 				"indexed": false,
-				"name": "questId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "questLv",
+				"name": "currentRound",
 				"type": "uint256"
 			},
 			{
@@ -390,12 +469,7 @@ export const abi = [
 			},
 			{
 				"indexed": false,
-				"name": "bonus",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "percent",
+				"name": "currentShare",
 				"type": "uint256"
 			}
 		],

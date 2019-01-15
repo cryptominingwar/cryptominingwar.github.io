@@ -1,117 +1,17 @@
 export const abi = [
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "bossRoundNumber",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "playerWin",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "ethBonus",
-				"type": "uint256"
-			}
-		],
-		"name": "eventEndAtkBoss",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "atkBoss",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "setDefenceBoss",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "setupMiniGame",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
+		"constant": true,
 		"inputs": [],
-		"name": "startGame",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
+		"name": "totalPayments",
+		"outputs": [
 			{
-				"indexed": false,
-				"name": "bossRoundNumber",
+				"name": "",
 				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "playerAtk",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "virusAtk",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "dame",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "timeAtk",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "isLastHit",
-				"type": "bool"
 			}
 		],
-		"name": "eventAttackBoss",
-		"type": "event"
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"constant": false,
@@ -128,52 +28,23 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"constant": false,
-		"inputs": [],
-		"name": "withdrawPayments",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "withdrawReward",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "administrator",
-		"outputs": [
+		"inputs": [
 			{
-				"name": "",
-				"type": "address"
+				"name": "_value",
+				"type": "uint256"
 			}
 		],
+		"name": "setHalfTimeAtkBoss",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "BLOOD_BOSS_DEFAULT",
+		"name": "BOSS_DEF_DEFFAULT",
 		"outputs": [
 			{
 				"name": "",
@@ -230,7 +101,21 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "bossRoundNumber",
+		"name": "isContractMiniGame",
+		"outputs": [
+			{
+				"name": "_isContractMiniGame",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "HALF_TIME_ATK_BOSS",
 		"outputs": [
 			{
 				"name": "",
@@ -239,6 +124,76 @@ export const abi = [
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setDefenceBoss",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getCurrentReward",
+		"outputs": [
+			{
+				"name": "_currentReward",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "BOSS_HP_DEFAULT",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawPayments",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "atkBoss",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -265,13 +220,60 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setContractsMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setMiningWarInterface",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "removeContractMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
-		"inputs": [],
-		"name": "DEF_BOSS_DEFFAULT",
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "miniGames",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -281,7 +283,7 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "EngineerContract",
+		"name": "Engineer",
 		"outputs": [
 			{
 				"name": "",
@@ -293,13 +295,45 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "HALF_TIME_ATK_BOSS",
-		"outputs": [
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "withdrawReward",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
 			{
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "setupMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "MiningWar",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -307,12 +341,26 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setBossHPDefault",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
-		"name": "isContractMiniGame",
+		"name": "isBossWannaCryContract",
 		"outputs": [
 			{
-				"name": "_isContractMiniGame",
+				"name": "",
 				"type": "bool"
 			}
 		],
@@ -323,11 +371,34 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "MiningwarContract",
+		"name": "bossRoundNumber",
 		"outputs": [
 			{
 				"name": "",
-				"type": "address"
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "startGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "VIRUS_MINING_PERIOD",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -395,11 +466,11 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "totalPayments",
+		"name": "administrator",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint256"
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -407,17 +478,107 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "VIRUS_MINING_PERIOD",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setEngineerInterface",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "bossRoundNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "playerAtk",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "virusAtk",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "dame",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "totalDame",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "timeAtk",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "isLastHit",
+				"type": "bool"
+			},
+			{
+				"indexed": false,
+				"name": "crystalsReward",
 				"type": "uint256"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "eventAttackBoss",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "bossRoundNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "playerWin",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "ethBonus",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "bossHp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "prizePool",
+				"type": "uint256"
+			}
+		],
+		"name": "eventEndAtkBoss",
+		"type": "event"
 	}
 ];

@@ -33,6 +33,20 @@ const BossWannaCry = {
   *   Call To Contract 
   *  ----------------------------------------------------------------------------------------------------------
   */
+  getCurrentReward(callback ) {
+    this.CONTRACT_WITH_PROVIDER
+      .getCurrentReward
+      .call(
+        MYWeb3.getAccount(),
+        {
+          "from": MYWeb3.getAccount(),
+        },
+        function (err, result) {
+          if ( err ) return callback(err, null);
+          return callback(null, MYWeb3.toETH(result.toNumber()));
+        }
+      );
+  },
   getCurrentBossRoundNumber(callback ) {
     this.CONTRACT_WITH_PROVIDER
       .bossRoundNumber

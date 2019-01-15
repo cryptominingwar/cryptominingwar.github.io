@@ -1,5 +1,6 @@
 import { abi } from "./contract/abi"
 const Config = require("../../../config/config");
+import MYWeb3 from "./web-3";
 
 export const EthMagic = {
   //v1
@@ -36,6 +37,7 @@ export const EthMagic = {
     }
   },
   get_current_player_data(callback) {
+
     EthMagic.get_player_data(web3.eth.accounts[0], function (
       result
     ) {
@@ -51,12 +53,38 @@ export const EthMagic = {
 		  game.user.hashratePerDay = 0;
 	  }
       game.user.hasBoost       = parseInt(result[4]);
-      game.user.referral_count = parseInt(result[5]);
-      game.user.player_balance = parseFloat(EthMagic.toETH(result[6]));
-	  game.user.yourQuest      = parseInt(result[7]);
+      game.user.player_balance = parseFloat(EthMagic.toETH(result[5]));
 
       callback(game.user);
     })
+  },
+  getCurrentReward(callback ) {
+    EthMagic.mine_war_contract_with_provider
+      .getCurrentReward
+      .call(
+        web3.eth.accounts[0],
+        {
+          "from": web3.eth.accounts[0],
+        },
+        function (err, result) {
+          if ( err ) return callback(err, null);
+          return callback(null, MYWeb3.toETH(result.toNumber()));
+        }
+      );
+  },
+  getBoosterReward(callback) {
+    EthMagic.mine_war_contract_with_provider
+      .boosterReward
+      .call(
+        web3.eth.accounts[0],
+        {
+          "from": web3.eth.accounts[0],
+        },
+        function (err, result) {
+          if ( err ) return callback(err, null);
+          return callback(null, MYWeb3.toETH(result.toNumber()));
+        }
+      );
   },
   get_player_data(address, callback) {
     EthMagic.mine_war_contract_with_provider.getPlayerData.call(
@@ -71,6 +99,42 @@ export const EthMagic = {
         }
       }
     )
+  },
+  getData({ address }, callback) {
+     EthMagic.mine_war_contract_with_provider
+      .getData
+      .call(
+        address,
+        {
+            "from": web3.eth.accounts[0]
+        },
+        function (err, result) {
+
+          if (result[7].toNumber() == 0) err = true;
+
+          if ( err ) return ( err, null );
+
+          let miners = [];
+          for ( let i = 0; i < 8; i++ ) {
+            miners[i] = result[3][i].toNumber();
+          }
+
+          let data = {
+            "currentCrystals": result[0].toNumber(), 
+            "lastupdate": result[1].toNumber(), 
+            "hashratePerDay": result[2].toNumber(), 
+            "miners": miners, 
+            "hasBoost": result[4].toNumber(), 
+            "playerBalance": result[5].toNumber(), 
+
+            "round"   : result[6].toNumber(),
+            "deadline": result[7].toNumber(),
+            "prizePool": result[8].toNumber() 
+          };
+
+          return callback( err, data );
+        }
+      );
   },
   get_player_round_number(address, callback) {
     EthMagic.mine_war_contract.players.call(
@@ -87,6 +151,7 @@ export const EthMagic = {
   },
   get_free(callback) {
     EthMagic.mine_war_contract.getFreeMiner.sendTransaction(
+      web3.eth.accounts[0],
       {
         from: web3.eth.accounts[0],
         gas: web3.toHex(200000),

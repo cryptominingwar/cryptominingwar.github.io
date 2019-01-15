@@ -64,6 +64,42 @@ export const AirdropGame = {
           }
       );
   },
+  getData( callback ) {
+    this.miniGameContract_with_provider
+      .getData
+      .call(
+        web3.eth.accounts[0],
+        {
+            from: web3.eth.accounts[0]
+        },
+        function (err, result) {
+          if (err) return callback(err, null);
+          // if (result[0].toNumber() == 0) return callback(true, null);
+          let data = {
+              'miningWarRound'     : result[0].toNumber(),
+              'noJoinAirdrop'      : result[1].toNumber(), 
+              'lastDayJoin'        : result[2].toNumber(),
+              'nextTimeAirdropJoin': result[3].toNumber()
+          };
+          console.log(data);
+          return callback(null, data);
+      });
+  },
+  getNextCrystalReward( callback ) {
+    this.miniGameContract_with_provider
+      .getNextCrystalReward
+      .call(
+        web3.eth.accounts[0],
+        {
+            from: web3.eth.accounts[0]
+        },
+        function (err, result) {
+          console.log("result");
+          console.log(result);
+          if (err) return callback(err, null);
+          return callback(null, result.toNumber());
+      });
+  },
   getPlayerAirdropGameData ( callback ) {
     this.miniGameContract_with_provider
       .players
@@ -92,7 +128,7 @@ export const AirdropGame = {
   },
   joinAirdropGame ( callback ) {
     this.miniGameContract
-      .joinMiniGame
+      .joinAirdrop
       .sendTransaction(
         {
           from: web3.eth.accounts[0],

@@ -29,17 +29,26 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [
+		"inputs": [],
+		"name": "miningWarAddress",
+		"outputs": [
 			{
-				"name": "_addr",
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "calculateCurrentVirus",
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "Arena",
 		"outputs": [
 			{
-				"name": "_currentVirus",
-				"type": "uint256"
+				"name": "",
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -67,20 +76,6 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "engineerRoundNumber",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
 		"inputs": [
 			{
 				"name": "_addr",
@@ -90,15 +85,11 @@ export const abi = [
 		"name": "getPlayerData",
 		"outputs": [
 			{
-				"name": "_engineerRoundNumber",
-				"type": "uint256"
-			},
-			{
 				"name": "_virusNumber",
 				"type": "uint256"
 			},
 			{
-				"name": "_virusDefence",
+				"name": "_currentVirus",
 				"type": "uint256"
 			},
 			{
@@ -116,14 +107,6 @@ export const abi = [
 			{
 				"name": "_engineersCount",
 				"type": "uint256[8]"
-			},
-			{
-				"name": "_nextTimeAtk",
-				"type": "uint256"
-			},
-			{
-				"name": "_endTimeUnequalledDef",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -206,90 +189,7 @@ export const abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "engineerNumbers",
-				"type": "uint256[]"
-			}
-		],
-		"name": "buyEngineer",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_atk",
-				"type": "uint256"
-			},
-			{
-				"name": "_def",
-				"type": "uint256"
-			}
-		],
-		"name": "setVirusInfo",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "miningWarAdministrator",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "HALF_TIME",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_atkAddress",
-				"type": "address"
-			},
-			{
-				"name": "_defAddress",
-				"type": "address"
-			}
-		],
-		"name": "canAttack",
-		"outputs": [
-			{
-				"name": "_canAtk",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_defAddress",
+				"name": "_addr",
 				"type": "address"
 			},
 			{
@@ -297,7 +197,7 @@ export const abi = [
 				"type": "uint256"
 			}
 		],
-		"name": "attack",
+		"name": "subResearch",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -307,28 +207,22 @@ export const abi = [
 		"constant": false,
 		"inputs": [
 			{
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"name": "idx",
+				"type": "uint256"
+			},
+			{
 				"name": "_value",
 				"type": "uint256"
 			}
 		],
-		"name": "addVirusDefence",
+		"name": "addEngineer",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "miningWarContractAddress",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -348,6 +242,20 @@ export const abi = [
 			{
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "EngineerOld",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -383,6 +291,25 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "calCurrentVirus",
+		"outputs": [
+			{
+				"name": "_currentVirus",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -402,13 +329,8 @@ export const abi = [
 	},
 	{
 		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			}
-		],
-		"name": "setAtkNowForPlayer",
+		"inputs": [],
+		"name": "loadOldData",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -418,11 +340,25 @@ export const abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_contractMiniGameAddress",
+				"name": "_addr",
 				"type": "address"
 			}
 		],
 		"name": "setContractsMiniGame",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setMiningWarInterface",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -466,33 +402,10 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "virus",
-		"outputs": [
-			{
-				"name": "atk",
-				"type": "uint256"
-			},
-			{
-				"name": "def",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_contractMiniGameAddress",
+				"name": "_addr",
 				"type": "address"
 			}
 		],
@@ -500,6 +413,51 @@ export const abi = [
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "addResearch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "boostData",
+		"outputs": [
+			{
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"name": "boostRate",
+				"type": "uint256"
+			},
+			{
+				"name": "basePrice",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -555,6 +513,20 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "isEngineerContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -573,9 +545,23 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setArenaInterface",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
-		"name": "MiningWarContract",
+		"name": "MiningWar",
 		"outputs": [
 			{
 				"name": "",
@@ -584,6 +570,20 @@ export const abi = [
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "engineerNumbers",
+				"type": "uint256[8]"
+			}
+		],
+		"name": "buyEngineer",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -667,15 +667,7 @@ export const abi = [
 		"name": "players",
 		"outputs": [
 			{
-				"name": "engineerRoundNumber",
-				"type": "uint256"
-			},
-			{
 				"name": "virusNumber",
-				"type": "uint256"
-			},
-			{
-				"name": "virusDefence",
 				"type": "uint256"
 			},
 			{
@@ -687,12 +679,8 @@ export const abi = [
 				"type": "uint256"
 			},
 			{
-				"name": "nextTimeAtk",
-				"type": "uint256"
-			},
-			{
-				"name": "endTimeUnequalledDef",
-				"type": "uint256"
+				"name": "endLoadOldData",
+				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -732,24 +720,6 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_addr",
-				"type": "address"
-			},
-			{
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "addTimeUnequalledDefence",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [],
 		"name": "administrator",
@@ -766,35 +736,7 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "HALF_TIME_ATK",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
 		"name": "BASE_PRICE",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "VIRUS_NORMAL",
 		"outputs": [
 			{
 				"name": "",
@@ -821,56 +763,141 @@ export const abi = [
 		"inputs": [
 			{
 				"indexed": false,
-				"name": "playerAtk",
+				"name": "_addr",
 				"type": "address"
 			},
 			{
 				"indexed": false,
-				"name": "playerDef",
-				"type": "address"
+				"name": "engineerNumbers",
+				"type": "uint256[8]"
 			},
 			{
 				"indexed": false,
-				"name": "isWin",
-				"type": "bool"
-			},
-			{
-				"indexed": false,
-				"name": "winCrystals",
+				"name": "_crytalsPrice",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
-				"name": "virusPlayerAtkDead",
+				"name": "_ethPrice",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
-				"name": "virusPlayerDefDead",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "timeAtk",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "engineerRoundNumber",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "atk",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "def",
+				"name": "_researchBuy",
 				"type": "uint256"
 			}
 		],
-		"name": "eventEndAttack",
+		"name": "BuyEngineer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_boostIdx",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "beneficiary",
+				"type": "address"
+			}
+		],
+		"name": "BuyBooster",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_virus",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_type",
+				"type": "uint256"
+			}
+		],
+		"name": "ChangeVirus",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "BecomeGameSponsor",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_currentResearch",
+				"type": "uint256"
+			}
+		],
+		"name": "UpdateResearch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_virusNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_virusDefence",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "research",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_engineersCount",
+				"type": "uint256[8]"
+			}
+		],
+		"name": "LoadOldData",
 		"type": "event"
 	}
 ];

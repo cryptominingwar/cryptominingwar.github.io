@@ -4,10 +4,25 @@ game.web3 = {};
 
 game.default_gas_price = 0;
 
+game.balance = 0;
 /** ----------------------------------------------------------------------
 * MINING WAR GAME INFORMATION
 * ------------------------------------------------------------------------
 */
+
+game.miningWarData = {
+    "currentCrystals": 0, 
+    "lastupdate": 0, 
+    "hashratePerDay": 0, 
+    "miners": [], 
+    "hasBoost": 0, 
+    "playerBalance": 0, 
+
+    "round"   : 0,
+    "deadline": 0,
+    "prizePool": 0 
+};
+
 game.user = {
     "address": '',
     "player_balance": 0,
@@ -61,6 +76,13 @@ game.rank_list = [];
 * AIRDROP GAME INFORMATION
 * ------------------------------------------------------------------------
 */
+game.airdropData = {
+    miningWarRound: 0,
+    noJoinAirdrop: 0, 
+    lastDayJoin: 0,
+    nextTimeAirdropJoin: 0
+};
+game.airdropCrystalReward = 0;
 game.currentAirdropGameData = {
     miningWarRoundNumber: 0,
     ended: 0,
@@ -96,27 +118,24 @@ game.gameSponsorPrice = 0;
 game.engineerPrizePool = 0;
 
 game.engineerPlayer = {
-    "engineerRoundNumber": 0,
     "virusNumber": 0,
-    "virusDefence": 0,
+    "currentVirus": 0,
     "research": 0,
     "researchPerDay": 0,
     "lastUpdateTime": 0,
     "engineers": [0,0,0,0,0,0,0,0],
-    "hasBooster": false,
-    "nextTimeAtk": 0,
-    "endTimeUnequalledDef": 0
+    "hasBooster": false
 }
 // engineer
 game.engineerData = [];
-game.engineerData[0] = { "basePrice": 10,      "baseEth": 0,    "baseResearch": 10,    "limit": 10 };
-game.engineerData[1] = { "basePrice": 50,      "baseEth": 0.01,"baseResearch": 200,   "limit": 2 };
-game.engineerData[2] = { "basePrice": 200,     "baseEth": 0.02, "baseResearch": 800,   "limit": 4 };
-game.engineerData[3] = { "basePrice": 800,     "baseEth": 0.04, "baseResearch": 3200,  "limit": 8 };
-game.engineerData[4] = { "basePrice": 3200,    "baseEth": 0.08, "baseResearch": 9600,  "limit": 16 };
-game.engineerData[5] = { "basePrice": 12800,   "baseEth": 0.16, "baseResearch": 38400, "limit": 32 };
-game.engineerData[6] = { "basePrice": 102400,  "baseEth": 0.32, "baseResearch": 204800,"limit": 64 };
-game.engineerData[7] = { "basePrice": 819200,  "baseEth": 0.64, "baseResearch": 819200,"limit": 65536 };
+game.engineerData[0] = { "basePrice": 10,      "baseEth": 0,    "baseResearch": 10,     "limit": 10 };
+game.engineerData[1] = { "basePrice": 50,      "baseEth": 0.01,"baseResearch":  3356,   "limit": 2 };
+game.engineerData[2] = { "basePrice": 200,     "baseEth": 0.02, "baseResearch": 8390,   "limit": 4 };
+game.engineerData[3] = { "basePrice": 800,     "baseEth": 0.04, "baseResearch": 20972,  "limit": 8 };
+game.engineerData[4] = { "basePrice": 3200,    "baseEth": 0.08, "baseResearch": 52430,  "limit": 16 };
+game.engineerData[5] = { "basePrice": 12800,   "baseEth": 0.16, "baseResearch": 131072, "limit": 32 };
+game.engineerData[6] = { "basePrice": 102400,  "baseEth": 0.32, "baseResearch": 327680, "limit": 64 };
+game.engineerData[7] = { "basePrice": 819200,  "baseEth": 0.64, "baseResearch": 819200, "limit": 65536 };
 //booster
 game.EngineerboostData = [];
 game.EngineerboostData[0] = { "owner": '', "boostRate": 150, "price": 0.01 };
@@ -170,11 +189,12 @@ game.yourRewardBossWannaCry = 0;
 * CRYSTALS CONTRIBUTIONS INFORMATION
 * ------------------------------------------------------------------------
 */
-game.minShare = 10000;
+game.minShare = 1;
 
 game.depositData = {
      "prizePool": 0,
      "crystals": 0,
+     "startTime": 0,
      "endTime": 0,
     // player info
      "reward": 0,
