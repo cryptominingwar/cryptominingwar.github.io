@@ -262,6 +262,8 @@ game.arenaData = {
     'virusDef': 0,
     'nextTimeAtk': 0,
     'endTimeUnequalledDef': 0,
+    'nextTimeArenaBonus': 0,
+    'bonusPoint': 0,
     'canAtk': false,
         // engineer
     'currentVirus': 0, 

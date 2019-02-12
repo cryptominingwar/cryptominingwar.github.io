@@ -35,7 +35,7 @@ const Arena = {
   */
   getData({ address }, callback ) {
     this.CONTRACT_WITH_PROVIDER
-      .getData
+      .getDataForUI
       .call(
         address,
         {
@@ -44,16 +44,18 @@ const Arena = {
         function (err, result) {
 
           if ( err ) return ( err, null );
-
+        
           let data = {
             'virusDef': result[0].toNumber(),
             'nextTimeAtk': result[1].toNumber(),
             'endTimeUnequalledDef': result[2].toNumber(),
-            'canAtk': result[3],
+            'nextTimeArenaBonus': result[3].toNumber(),
+            'bonusPoint': result[4].toNumber(),
+            'canAtk': result[5],
                 // engineer
-            'currentVirus': result[4].toNumber(), 
+            'currentVirus': result[6].toNumber(), 
                 // mingin war
-            'currentCrystals': result[5].toNumber()
+            'currentCrystals': result[7].toNumber()
           };
           return callback( err, data );
         }
