@@ -81,7 +81,6 @@ export const AirdropGame = {
               'lastDayJoin'        : result[2].toNumber(),
               'nextTimeAirdropJoin': result[3].toNumber()
           };
-          console.log(data);
           return callback(null, data);
       });
   },
@@ -94,8 +93,6 @@ export const AirdropGame = {
             from: web3.eth.accounts[0]
         },
         function (err, result) {
-          console.log("result");
-          console.log(result);
           if (err) return callback(err, null);
           return callback(null, result.toNumber());
       });

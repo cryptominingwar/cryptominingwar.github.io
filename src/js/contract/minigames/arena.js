@@ -51,6 +51,24 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "idx",
+				"type": "uint256"
+			},
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setArenaBonus",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
 		"name": "isContractMiniGame",
@@ -140,6 +158,38 @@ export const abi = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "MemoryArena",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setPlayerVirusDef",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -165,6 +215,34 @@ export const abi = [
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setMemoryArenaInterface",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "isArenaContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -218,6 +296,25 @@ export const abi = [
 		"inputs": [
 			{
 				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "arenaBonus",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
 				"type": "address"
 			}
 		],
@@ -247,21 +344,21 @@ export const abi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [
 			{
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"name": "_miningWarDeadline",
+				"name": "",
 				"type": "uint256"
 			}
 		],
 		"name": "setupMiniGame",
 		"outputs": [],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -294,11 +391,44 @@ export const abi = [
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "CRTSTAL_MINING_PERIOD",
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "getDataForUI",
 		"outputs": [
 			{
-				"name": "",
+				"name": "_virusDef",
+				"type": "uint256"
+			},
+			{
+				"name": "_nextTimeAtk",
+				"type": "uint256"
+			},
+			{
+				"name": "_endTimeUnequalledDef",
+				"type": "uint256"
+			},
+			{
+				"name": "_nextTimeArenaBonus",
+				"type": "uint256"
+			},
+			{
+				"name": "_bonusPoint",
+				"type": "uint256"
+			},
+			{
+				"name": "_canAtk",
+				"type": "bool"
+			},
+			{
+				"name": "_currentVirus",
+				"type": "uint256"
+			},
+			{
+				"name": "_currentCrystals",
 				"type": "uint256"
 			}
 		],
@@ -308,52 +438,20 @@ export const abi = [
 	},
 	{
 		"constant": false,
-		"inputs": [],
-		"name": "startGame",
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			},
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setVirusDef",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "VIRUS_MINING_PERIOD",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "players",
-		"outputs": [
-			{
-				"name": "virusDef",
-				"type": "uint256"
-			},
-			{
-				"name": "nextTimeAtk",
-				"type": "uint256"
-			},
-			{
-				"name": "endTimeUnequalledDef",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -391,21 +489,7 @@ export const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "HALF_TIME_ATK",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "VIRUS_NORMAL",
+		"name": "getNoDayStartMiningWar",
 		"outputs": [
 			{
 				"name": "",
@@ -483,6 +567,11 @@ export const abi = [
 			},
 			{
 				"indexed": false,
+				"name": "reward",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
 				"name": "virusAtkDead",
 				"type": "uint256"
 			},
@@ -505,14 +594,53 @@ export const abi = [
 				"indexed": false,
 				"name": "round",
 				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "programs",
-				"type": "uint256[]"
 			}
 		],
 		"name": "Attack",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "programLv1",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "programLv2",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "programLv3",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "programLv4",
+				"type": "uint256"
+			}
+		],
+		"name": "Programs",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "bonus",
+				"type": "uint256"
+			}
+		],
+		"name": "ArenaBonus",
 		"type": "event"
 	}
 ];
