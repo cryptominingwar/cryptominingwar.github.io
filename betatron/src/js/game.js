@@ -127,16 +127,17 @@ game.engineerPlayer = {
     "engineers": [0,0,0,0,0,0,0,0],
     "hasBooster": false
 }
+    
 // engineer
 game.engineerData = [];
 game.engineerData[0] = { "basePrice": 10,      "baseTrx": 0,    "baseResearch": 10,     "limit": 10 };
-game.engineerData[1] = { "basePrice": 50,      "baseTrx": 100,  "baseResearch": 3356,   "limit": 2 };
-game.engineerData[2] = { "basePrice": 200,     "baseTrx": 200,  "baseResearch": 8390,   "limit": 4 };
-game.engineerData[3] = { "basePrice": 800,     "baseTrx": 400,  "baseResearch": 20972,  "limit": 8 };
-game.engineerData[4] = { "basePrice": 3200,    "baseTrx": 800,  "baseResearch": 52430,  "limit": 16 };
-game.engineerData[5] = { "basePrice": 12800,   "baseTrx": 1600, "baseResearch": 131072, "limit": 32 };
-game.engineerData[6] = { "basePrice": 102400,  "baseTrx": 3200, "baseResearch": 327680, "limit": 64 };
-game.engineerData[7] = { "basePrice": 819200,  "baseTrx": 6400, "baseResearch": 819200, "limit": 65536 };
+game.engineerData[1] = { "basePrice": 50,      "baseTrx": 50,  "baseResearch": 3356,   "limit": 2 };
+game.engineerData[2] = { "basePrice": 200,     "baseTrx": 100,  "baseResearch": 8390,   "limit": 4 };
+game.engineerData[3] = { "basePrice": 800,     "baseTrx": 200,  "baseResearch": 20972,  "limit": 8 };
+game.engineerData[4] = { "basePrice": 3200,    "baseTrx": 400,  "baseResearch": 52430,  "limit": 16 };
+game.engineerData[5] = { "basePrice": 12800,   "baseTrx": 800, "baseResearch": 131072, "limit": 32 };
+game.engineerData[6] = { "basePrice": 102400,  "baseTrx": 1600, "baseResearch": 327680, "limit": 64 };
+game.engineerData[7] = { "basePrice": 819200,  "baseTrx": 3200, "baseResearch": 819200, "limit": 65536 };
 //booster
 game.EngineerboostData = [];
 game.EngineerboostData[0] = { "owner": '', "boostRate": 150, "price": 50 };

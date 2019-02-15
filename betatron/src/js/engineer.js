@@ -46,7 +46,7 @@ const EngineerGame = {
       .then(response)
       .catch(error);
     function response(result) { 
-      return callback(null, parseInt(result)); 
+      return callback(null, parseInt(result._currentCrystals)); 
     }  
     function error(e) { return call(e, null); }  
   },
