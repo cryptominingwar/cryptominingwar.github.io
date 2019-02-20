@@ -55,7 +55,7 @@ const Arena = {
         'virusDef': parseInt(result._virusDef),
         'nextTimeAtk': parseInt(result._nextTimeAtk),
         'endTimeUnequalledDef': parseInt(result._endTimeUnequalledDef),
-        'nextTimeArenaBonus': parseInt(result._endTimeUnequalledDef),
+        'nextTimeArenaBonus': parseInt(result._nextTimeArenaBonus),
         'bonusPoint': parseInt(result._bonusPoint),
         'canAtk': result._canAtk,
                 // engineer

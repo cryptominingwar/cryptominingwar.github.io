@@ -1,5 +1,8 @@
 const MYTronWeb = {
-	getAccount: ()      => { return tronWeb.defaultAddress['base58']; },
+	getAccount: ()      => { 
+		if (typeof(window.tronWeb) === 'undefined') return game.addressDefault;
+		return tronWeb.defaultAddress['base58']; 
+	},
 	toAddress : hex     => { return tronWeb.address.fromHex(hex); },
 	isAddress : address => { return tronWeb.isAddress(address) },
 	toTrx     : number  => { return tronWeb.fromSun(number); },

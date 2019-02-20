@@ -20,7 +20,7 @@ export const EthMagic = {
   // },
   init(callback) {
     if (typeof(window.tronWeb) === 'undefined') {
-        setTimeout(EthMagic.initContract, 1000);
+        setTimeout(EthMagic.init, 1000);
     } else {
       tronWeb
         .contract()
@@ -91,7 +91,6 @@ export const EthMagic = {
     function error(e) { return callback(e, null); } 
   },
   getPlayerMiners(address, callback) {
-    // return callback(null, [1,0,0,0,0,0,0,0])
     EthMagic.CONTRACT
       .getPlayerMiner(address)
       .call()
@@ -116,16 +115,30 @@ export const EthMagic = {
     EthMagic.CONTRACT
       .getPlayerData(address)
       .call()
-      .then(getMiners)
+      .then(getMiningWarRound)
       .catch(error);
-    function getMiners(playerData) {
+    function getMiningWarRound(playerData) {
+       EthMagic.getMiningWarRound((err, miningWarRound) => {
+        if (err) return error(err);
+        return getPlayerRound(playerData, miningWarRound)
+      });
+    }  
+    function getPlayerRound(playerData, miningWarRound) {
+      EthMagic.getPlayerRound({ address }, (err, playerRound) => {
+        if (err) return error(err);
+        return getMiners(playerData, playerRound, miningWarRound)
+      });
+    } 
+    function getMiners(playerData, playerRound, miningWarRound) {
 
       EthMagic.getPlayerMiners(address, (err, miners) => {
         if (err) return error(err);
-        response(playerData, miners);
+        response(playerData, playerRound, miningWarRound, miners);
       });
     } 
-    function response(playerData, miners) {
+    function response(playerData, playerRound, miningWarRound, miners) {
+      
+      if (miningWarRound != 0 && miningWarRound != playerRound) miners = [0,0,0,0,0,0,0,0];
       let data = {
         "crystals"      : parseInt(playerData.crystals),
         "lastupdate"    : parseInt(playerData.lastupdate),
@@ -139,42 +152,42 @@ export const EthMagic = {
     }
     function error(e) { return callback(e, null); } 
   },
-  // getData({ address }, callback) {
-  //    EthMagic.mine_war_contract_with_provider
-  //     .getData
-  //     .call(
-  //       address,
-  //       {
-  //           "from": web3.eth.accounts[0]
-  //       },
-  //       function (err, result) {
+  getData({ address }, callback) {
+     EthMagic.CONTRACT
+      .getData(address)
+      .call()
+      .then(getMiners)
+      .catch(error);
+     function getPlayerRound(playerData) {
+      EthMagic.getPlayerRound({ address }, (err, playerRound) => {
+        if (err) return error(err);
+        return getMiners(playerData, playerRound)
+      });
+     } 
+     function getMiners(playerData, playerRound) {
 
-  //         if (result[7].toNumber() == 0) err = true;
+      EthMagic.getPlayerMiners(address, (err, miners) => {
+        if (err) return error(err);
+        response(playerData, playerRound, miners);
+      });
+    } 
+    function response(playerData, playerRound, miners) {
 
-  //         if ( err ) return ( err, null );
 
-  //         let miners = [];
-  //         for ( let i = 0; i < 8; i++ ) {
-  //           miners[i] = result[3][i].toNumber();
-  //         }
-
-  //         let data = {
-  //           "currentCrystals": result[0].toNumber(), 
-  //           "lastupdate": result[1].toNumber(), 
-  //           "hashratePerDay": result[2].toNumber(), 
-  //           "miners": miners, 
-  //           "hasBoost": result[4].toNumber(), 
-  //           "playerBalance": result[5].toNumber(), 
-
-  //           "round"   : result[6].toNumber(),
-  //           "deadline": result[7].toNumber(),
-  //           "prizePool": result[8].toNumber() 
-  //         };
-
-  //         return callback( err, data );
-  //       }
-  //     );
-  // },
+      let data = {
+        "crystals"      : parseInt(playerData.crystals),
+        "lastupdate"    : parseInt(playerData.lastupdate),
+        "hashratePerDay": parseInt(playerData.hashratePerDay),
+        "hasBoost"      : parseInt(playerData.hasBoost),
+        "playerBalance" : parseInt(playerData.playerBalance),
+        "miningWarRound": parseInt(playerData._miningWarRound),
+        "miners" : miners
+              // "crystals": playerData.crystals,
+      };
+      return callback(null, data);
+    }
+    function error(e) { return callback(e, null); }   
+  },
   get_player_round_number(address, callback) {
     EthMagic.CONTRACT
       .players(address)
@@ -193,8 +206,6 @@ export const EthMagic = {
       .then(response)
       .catch(error);
     function response(result) {
-      console.log(result)
-      console.log("get_player_round_numbers")
       return callback();
     }  
     function error(e) { console.log(e); }  
@@ -254,6 +265,28 @@ export const EthMagic = {
       callback(game.deadline)
     } 
     function error(e) { console.log(e); } 
+  },
+  getMiningWarRound(callback) {
+    EthMagic.CONTRACT
+      .roundNumber()
+      .call()
+      .then(response)
+      .catch(error);
+    function response(result) {
+      return callback(null, parseInt(result));
+    } 
+    function error(e) { return callback(e, null); } 
+  },
+  getPlayerRound({ address }, callback) {
+    EthMagic.CONTRACT
+      .players(address)
+      .call()
+      .then(response)
+      .catch(error);
+    function response(result) {
+      return callback(null, parseInt(result.roundNumber));
+    } 
+    function error(e) { return callback(e, null); } 
   },
   get_rank_list(callback) {
     

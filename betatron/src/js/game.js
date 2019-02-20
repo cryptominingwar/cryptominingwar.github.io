@@ -26,6 +26,7 @@ game.miningWarData = {
 game.user = {
     "address": '',
     "player_balance": 0,
+    "miningWarRound": 0,
     "crystals": 0,
     "lastupdate": 0,
     "hashratePerDay": 0,
