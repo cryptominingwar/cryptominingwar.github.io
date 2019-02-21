@@ -45,7 +45,7 @@ const Wallet = {
       .then(response)
       .catch(error);
     function response(result) {
-      return callback(err, MYTronWeb.toTrx(result));
+      return callback(null, MYTronWeb.toTrx(parseInt(result._currentReward)));
     }  
     function error(e) { return callback(e, null); }
   },
@@ -54,13 +54,7 @@ const Wallet = {
   *  ----------------------------------------------------------------------------------------------------------
   */
   withdrawReward() {
-    this.CONTRACT
-      .withdrawReward()
-      .send()
-      .then(response)
-      .catch(error);
-    function response() {}
-    function error() {}  
+    this.CONTRACT.withdrawReward().send();
   }
 }
 export default Wallet
